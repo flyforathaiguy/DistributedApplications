@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>add_a_shirt</from-outcome>
+            <to-view-id>addShirt.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>add_a_shoe</from-outcome>
+            <to-view-id>addShoe.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit_a_shoe</from-outcome>
+            <to-view-id>editShoe.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit_a_shirt</from-outcome>
+            <to-view-id>editShirt.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>added_to_cart</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        
+    </navigation-rule>
+    
+    <navigation-rule>   
+          
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>product_added</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>product_edited</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+    
+    </navigation-rule>
+    
+    <navigation-rule>    
+                
+        <from-view-id>cart.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>checkout_cart</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>    
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>clear_cart</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>remove_from_cart</from-outcome>
+            <to-view-id>cart.xhtml</to-view-id>
+        </navigation-case>
+        
+    </navigation-rule>
+    
+</faces-config>
