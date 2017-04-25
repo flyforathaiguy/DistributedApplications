@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Name:" for="name" />
+                    <h:inputText id="name" value="#{tagController.tag.name}" title="Name" />
+                    <h:outputLabel value="Id:" for="id" />
+                    <h:inputText readonly="true" id="id" value="#{tagController.tag.id}" title="Id" />
+                    
+                    <h:selectManyListbox value="#{tagController.products}">
+                        <f:selectItems value="#{tagController.findAllProducts()}" var="product" itemLabel="#{product.name}" itemValue="#{product.id}"/>
+                    </h:selectManyListbox>
+                    
+                    <h:commandButton value="Save" action="#{tagController.edit()}"></h:commandButton>
+                    <h:commandButton value="Back" action="indexTag"></h:commandButton>
+                    
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

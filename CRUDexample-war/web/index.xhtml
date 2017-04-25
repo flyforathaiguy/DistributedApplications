@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+            
+            <br></br>
+            Shoes
+            <h:dataTable var = "shoe" value = "#{shoeController.findAll()}"  border="1" cellpadding ="2" cellspacing = "2">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value = "#{shoe.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value = "#{shoe.name}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    <h:outputText value = "#{shoe.price}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                    <h:outputText value = "#{shoe.quantity}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Size</f:facet>
+                    <h:outputText value="#{shoe.size}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action="#{shoeController.remove(shoe)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{shoeController.edit(shoe)}"></h:commandLink> | 
+                    <h:commandLink value="Add to cart" action="#{cartController.add(shoe)}"></h:commandLink>
+                </h:column>
+
+            </h:dataTable>
+            <h:link value="Add new shoe" outcome="addShoe"></h:link>
+            
+            <br></br>
+            <br></br>
+            
+            Shirts
+            <h:dataTable var="shirt" value ="#{shirtController.findAll()}" border="1" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{shirt.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value = "#{shirt.name}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    <h:outputText value = "#{shirt.price}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                    <h:outputText value = "#{shirt.quantity}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Size</f:facet>
+                    <h:outputText value="#{shirt.size}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action="#{shirtController.remove(shirt)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{shirtController.edit(shirt)}"></h:commandLink> | 
+                    <h:commandLink value="Add to cart" action="#{cartController.add(shirt)}"></h:commandLink>
+                </h:column>
+            </h:dataTable>
+            <h:link value="Add new shirt" outcome="addShirt"></h:link>
+            
+            <br></br>
+            <br></br>
+            
+            <h:link value="View cart" outcome="cart"></h:link>
+            <br></br>
+            <h:link value="Manage tags" outcome="indexTag"></h:link>
+            
+        </h:form>
+ 
+    </h:body>
+</html>
+
