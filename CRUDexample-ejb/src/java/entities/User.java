@@ -24,10 +24,9 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-    private String firstName;
-    private String email;
+    private String userName;
+    private String password;
+    
     
     @Embedded
     private UserDetails details;
@@ -36,20 +35,20 @@ public class User implements Serializable {
     @JoinColumn (name = "address_fk")
     private Address address;
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public UserDetails getDetails() {
@@ -67,18 +66,11 @@ public class User implements Serializable {
     public void setAdress(Address adress) {
         this.address = adress;
     }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (userName != null ? userName.hashCode() : 0);
         return hash;
     }
 
@@ -89,7 +81,7 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.userName == null && other.userName != null) || (this.userName != null && !this.userName.equals(other.userName))) {
             return false;
         }
         return true;
@@ -97,7 +89,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.User[ id=" + id + " ]";
+        return "entities.User[ id=" + userName + " ]";
     }
     
 }

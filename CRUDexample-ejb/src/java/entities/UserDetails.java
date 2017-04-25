@@ -9,25 +9,55 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import misc.MaritalStatus;
 import misc.Sex;
 
 @Embeddable
 public class UserDetails implements Serializable {
     
-   @Enumerated(EnumType.STRING)
-   private MaritalStatus maritalStatus;
-   
+    private String firstName;
+    private String lastName;
+    private String email;
+    
    @Enumerated(EnumType.STRING)
    private Sex sex;
 
-    public MaritalStatus getMaritalStatus() {
-        return maritalStatus;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        System.out.println("Set sex with object");
+        this.sex = sex;
+    }
+    
+    public void setSex(String sex){
+        System.out.println("Set sex with string");
+    }
+
    
    
    

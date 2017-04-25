@@ -33,26 +33,26 @@ public class CartController implements Serializable {
     
     public String add(ProductEntity p){
         shoppingCart.addToCart(p);
-        return "index";
+        return "added_to_cart";
     }
     
     public String remove(ProductEntity p){
         shoppingCart.removeFromCart(p);
-        return "cart";
+        return "remove_from_cart";
     }
     
     public String clearCart(){
         shoppingCart.clearCart();
         singletonBean.messageCheckout();
-        return "cart";
+        return "clear_cart";
     }
     
     //Voorlopige versie, nog uitbreiden met flows enz probably
     public String checkOut(){
         singletonBean.addPurchase(shoppingCart.getCart().size());
-        shoppingCart.clearCart();
-        singletonBean.messageCheckout();
-        return "index";
+        //shoppingCart.clearCart();
+        //singletonBean.messageCheckout();
+        return "checkout_cart";
     }
     
     public List<ProductEntity> findAll(){

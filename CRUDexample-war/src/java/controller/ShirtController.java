@@ -21,7 +21,7 @@ import model.TagEntityFacade;
  * @author jaspe
  */
 @Named(value = "shirtController")
-@RequestScoped
+@SessionScoped
 public class ShirtController implements Serializable {
 
     @EJB
@@ -38,7 +38,7 @@ public class ShirtController implements Serializable {
         return shirt;
     }
 
-    public void setShoe(ShirtEntity shirt) {
+    public void setShirt(ShirtEntity shirt) {
         this.shirt = shirt;
     }
     
@@ -48,7 +48,7 @@ public class ShirtController implements Serializable {
     
     public String add(){
         this.shirtEntityFacade.create(this.shirt);
-        return "index";
+        return "product_added";
     }
     
     public void remove(ShirtEntity shirt){
@@ -64,12 +64,12 @@ public class ShirtController implements Serializable {
     
     public String edit(ShirtEntity shirt){
         this.shirt = shirt;
-        return "editShirt";
+        return "edit_a_shirt";
     }
     
     public String edit(){
         this.shirtEntityFacade.edit(this.shirt);
-        return "index";
+        return "product_edited";
     }
     
     

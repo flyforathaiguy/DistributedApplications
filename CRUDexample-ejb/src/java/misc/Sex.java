@@ -6,6 +6,18 @@
 package misc;
 
 public enum Sex{
-    MALE,
-    FEMALE
+    MALE("Male"),
+    FEMALE("Female");
+   
+    private final String label;
+    
+    private Sex(String label){
+        this.label=label;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+    
+    
 }
