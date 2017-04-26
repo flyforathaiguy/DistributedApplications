@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Your order has been placed! Your order details are:"/></h1>
+                <h2><h:outputText value="Items:"/></h2>
+                
+                <h:dataTable var = "p" value = "#{userController.orderList}"  border="1" cellpadding ="2" cellspacing = "2">
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value = "#{p}"></h:outputText>
+                    </h:column>
+                </h:dataTable>
+                
+                <h2><h:outputText value="Shipping address:"/></h2>
+                
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="First name:" />
+                    <h:outputLabel value="#{userController.userDetails.firstName}" />
+                    <h:outputLabel value="Last name:" />
+                    <h:outputLabel value="#{userController.userDetails.lastName}" />
+                    <h:outputLabel value="Email:" />
+                    <h:outputLabel value="#{userController.userDetails.email}" />
+                    <h:outputLabel value="Street:" />
+                    <h:outputLabel value="#{userController.address.street}" />
+                    <h:outputLabel value="Number: "/>
+                    <h:outputLabel value="#{userController.address.number}" />
+                    <h:outputLabel value="City:"/>
+                    <h:outputLabel value="#{userController.address.city}" />
+                    <h:outputLabel value="Zipcode:" />
+                    <h:outputLabel value="#{userController.address.zipcode}" />
+                    <h:outputLabel value="Country:"/>
+                    <h:outputLabel value="#{userController.address.country}" />
+                    
+                </h:panelGrid>
+                <h:commandButton value="Back to products" action="#{userController.endShopping()}"/>
+            </h:form>
+        </f:view>
+        
+    </h:body>
+</html>
+

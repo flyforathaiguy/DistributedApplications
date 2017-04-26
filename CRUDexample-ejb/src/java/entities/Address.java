@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -22,10 +23,24 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @NotNull(message = "Please enter your street")
     private String street;
+    @NotNull(message = "Please enter your city")
     private String city;
+    @NotNull(message = "Please enter your zipcode")
     private int zipcode;
+    @NotNull(message = "Please enter your country")
     private String country;
+    @NotNull(message = "Please enter your number")
+    private int number;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
     public String getStreet() {
         return street;

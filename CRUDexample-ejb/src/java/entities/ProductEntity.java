@@ -135,6 +135,16 @@ public abstract class ProductEntity implements Serializable {
         return name;
         //return "entities.ProductEntity[ id=" + id + " ]";
     }
+    
+    public String toInfoString(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Name: ");
+        builder.append(name);
+        builder.append('\t');
+        builder.append(", price: ");
+        builder.append(price);
+        return builder.toString();
+    }
 
     private TagEntityFacade lookupTagEntityFacadeBean() {
         try {

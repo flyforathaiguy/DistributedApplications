@@ -6,17 +6,21 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
-        <h:outputLabel value="Username: " for="username" />
-        <h:inputText id="userName" value="#{userController.loginUserName}" title="Name" />
-        <br></br>
-        
-        <h:outputLabel value="Password: " for="password" />
-        <h:inputSecret id="password" value="#{userController.loginPassword}" title="Password"/>
-        <br></br>
-        
-        <h:commandButton value="Login" action="#{userController.login()}"></h:commandButton>
+        <h:form>
+            
+            <h1><h:outputText value="Login"></h:outputText></h1>
+            <h:panelGrid>
+                <h:outputLabel value="Username: " for="username" />
+                <h:inputText id="userName" value="#{userController.loginUserName}"
+                             required="true" requiredMessage="Enter your username"/>
 
+                <h:outputLabel value="Password: " for="password" />
+                <h:inputSecret id="password" value="#{userController.loginPassword}" 
+                               required="true" requiredMessage="Enter your password"/>
+            </h:panelGrid>
+            
+            <h:commandButton value="Login" action="#{userController.login()}"></h:commandButton>
+        </h:form>
     </h:body>
 </html>
 

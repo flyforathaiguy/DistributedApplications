@@ -8,15 +8,14 @@
     </h:head>
     <h:body>
         <h:form>
-        Login Page
-        <br></br>
-        Create a user
-        <h:link value="Create User" outcome="create_a_user"></h:link>
-        <br></br>
-        <br></br>
-        Already have a user account?
-        <h:link value="Login Existing User" outcome="existing_user"></h:link>
-        
+            <h1><h:outputText value="Login or Create new user"></h:outputText></h1>
+            <br></br>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="No user account yet?"/>
+                <h:commandButton value="Create user" action="#{userController.createNewUser()}"/>
+                <h:outputLabel value="Already have a user account?"/>
+                <h:commandButton value="Login Existing User" action="#{userController.existingUser()}" />
+            </h:panelGrid>
         </h:form>
         
     </h:body>

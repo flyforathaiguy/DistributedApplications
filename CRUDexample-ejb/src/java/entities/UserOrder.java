@@ -6,7 +6,12 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,13 +21,29 @@ import javax.persistence.Id;
  * @author jaspe
  */
 @Entity
-public class Order implements Serializable {
+public class UserOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(insertable=true, updatable=true, unique=true, nullable=false)
     private Long id;
+    
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> products = new ArrayList<>();
 
+    public List<String> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<String> products) {
+        this.products = products;
+    }
+
+    public void addProduct(String s){
+        this.products.add(s);
+    }
+    
     public Long getId() {
         return id;
     }
@@ -41,10 +62,10 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order)) {
+        if (!(object instanceof UserOrder)) {
             return false;
         }
-        Order other = (Order) object;
+        UserOrder other = (UserOrder) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -53,7 +74,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Order[ id=" + id + " ]";
+        return "entities.UserOrder[ id=" + id + " ]";
     }
     
 }

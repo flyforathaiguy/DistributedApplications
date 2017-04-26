@@ -7,27 +7,51 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Address details
         
         <f:view>
-            <h:form>
-                <h1><h:outputText value="Address details 2"/></h1>
+            <h1><h:outputText value="Address details"/></h1>
+            
+            <h:form rendered="#{userController.user.address == null}">
+                <h:outputText value="You do not have an address yet"/>
+            </h:form>
+            
+            <h:form rendered="#{userController.user.address != null}">
+                <h2><h:outputText value="Saved address"/></h2>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Name:" for="name" />
-                    <h:inputText id="name" value="#{shirtController.shirt.name}" title="Name" />
-                    <h:outputLabel value="Price:" for="price" />
-                    <h:inputText id="price" value="#{shirtController.shirt.price}" title="Price" />
-                    <h:outputLabel value="Quantity:" for="quantity" />
-                    <h:inputText id="quantity" value="#{shirtController.shirt.quantity}" title="Quantity" />
-                    <h:outputLabel value="Size:" for="size" />
-                    <h:inputText id="size" value="#{shirtController.shirt.size}" title="Size" />
+                    <h:outputLabel value="Street:" />
+                    <h:outputText value="#{userController.user.address.street}"/>
+                    <h:outputLabel value="Number: "/>
+                    <h:outputText value="#{userController.user.address.number}"/>
+                    <h:outputLabel value="City:"/>
+                    <h:outputLabel value="#{userController.user.address.city}"/>
+                    <h:outputLabel value="Country:"/>
+                    <h:outputLabel value="#{userController.user.address.country}"/>
+                    <h:outputLabel value="Zipcode:" />
+                    <h:outputLabel value="#{userController.user.address.zipcode}"/>
                     
-                    <h:commandButton value="Save" action="#{shirtController.add()}"></h:commandButton>
+                    <h:commandButton value="Use this address" action="#{userController.confirmAddress()}"></h:commandButton>   
+                </h:panelGrid>
+            </h:form>
+            
+            <h:form>
+                <h2><h:outputText value="Create new address"/></h2>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Street:" />
+                    <h:inputText id="street" value="#{userController.address.street}" title="Name" />
+                    <h:outputLabel value="Number: "/>
+                    <h:inputText id="number" value="#{userController.address.number}" title="Number" />
+                    <h:outputLabel value="City:"/>
+                    <h:inputText id="city" value="#{userController.address.city}" title="Price" />
+                    <h:outputLabel value="Country:"/>
+                    <h:inputText id="country" value="#{userController.address.country}" title="Quantity" />
+                    <h:outputLabel value="Zipcode:" />
+                    <h:inputText id="zipCode" value="#{userController.address.zipcode}" title="Size" />
+                    
+                    <h:commandButton value="Confirm new address" action="#{userController.confirmNewAddress()}"></h:commandButton>
                     
                 </h:panelGrid>
             </h:form>
         </f:view>
-
         
     </h:body>
 </html>

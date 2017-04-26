@@ -9,16 +9,14 @@ import beans.ShoppingCart;
 import beans.SingletonBean;
 import entities.ProductEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
-/**
- *
- * @author jaspe
- */
 @Named(value = "cartController")
+//@ManagedBean(name = "cartController", eager=true)
 @SessionScoped
 public class CartController implements Serializable {
 
@@ -43,16 +41,20 @@ public class CartController implements Serializable {
     
     public String clearCart(){
         shoppingCart.clearCart();
-        singletonBean.messageCheckout();
+        //singletonBean.messageCheckout();
         return "clear_cart";
     }
     
     //Voorlopige versie, nog uitbreiden met flows enz probably
     public String checkOut(){
-        singletonBean.addPurchase(shoppingCart.getCart().size());
-        //shoppingCart.clearCart();
-        //singletonBean.messageCheckout();
+        System.out.println("Starting checkout procedure");
         return "checkout_cart";
+    }
+    
+    public boolean finalizeCheckout(){
+        shoppingCart.clearCart();
+        singletonBean.messageCheckout();
+        return true;
     }
     
     public List<ProductEntity> findAll(){

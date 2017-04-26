@@ -9,13 +9,17 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 import misc.Sex;
 
 @Embeddable
 public class UserDetails implements Serializable {
     
+    @NotNull(message = "Please enter your first name")
     private String firstName;
+    @NotNull(message = "Please enter your last name")
     private String lastName;
+    @NotNull(message = "Please enter your email address")
     private String email;
     
    @Enumerated(EnumType.STRING)

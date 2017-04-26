@@ -6,6 +6,9 @@
     <class>entities.ShoeEntity</class>
     <class>entities.ShirtEntity</class>
     <class>entities.TagEntity</class>
+    <class>entities.Address</class>
+    <class>entities.User</class>
+    <class>entities.UserOrder</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

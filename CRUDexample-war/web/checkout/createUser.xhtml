@@ -7,39 +7,45 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
-        <h:form>
-        Create a New User
-        <br></br>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create a new user"/></h1>
+                <br></br>
+                <h:panelGrid>
+                    <h:outputLabel value="Username: " for="userName" />
+                    <h:inputText id="userName" value="#{userController.user.userName}" title="Name" />     
+                    
+                    <h:outputLabel value="Password: " for="password" />
+                    <h:inputSecret id="password" value="#{userController.user.password}" required="true"
+                                   requiredMessage="Please enter your password">
+                                    <f:validator validatorId="PasswordValidator"/>
+                                    <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+                    </h:inputSecret>
+                    
+                    <h:outputLabel value="Confirm password: " for="confirmPassword"/>
+                    <h:inputSecret id="confirmPassword" required="true"
+                                   binding="#{confirmPassword}"
+                                   requiredMessage="Please confirm your password"/>
+                    
+                    <h:outputLabel value="First Name: " for="firstName"/>
+                    <h:inputText id="firstName" value="#{userController.userDetails.firstName}" />
+                    <h:outputLabel value="Last Name: " for="lastName"/>
+                    <h:inputText id="lastName" value="#{userController.userDetails.lastName}" />
+                    <h:outputLabel value="Email: " for="email"/>
+                    <h:inputText id="email" value="#{userController.userDetails.email}">
+                        <f:validator validatorId="EmailValidator" />
+                    </h:inputText>
 
-        <h:outputLabel value="Username: " for="username" />
-        <h:inputText id="userName" value="#{userController.user.userName}" title="Name" />
-        <br></br>
-        
-        <h:outputLabel value="Password: " for="password" />
-        <h:inputSecret id="password" value="#{userController.user.password}" title="Password"/>
-        <br></br>
-        
-        <h:inputText value="First Name: " />
-        <h:inputText id="firstName" value="#{userController.userDetails.firstName}" />
-        <br></br>
-        
-        <h:inputText value="Last Name: " />
-        <h:inputText id="lastName" value="#{userController.userDetails.lastName}" />
-        <br></br>
-        
-        <h:inputText value="Email: " />
-        <h:inputText id="email" value="#{userController.userDetails.email}" />
-        <br></br>
-        
-        <h:selectOneRadio id="gender" value="#{userController.userDetails.sex}">
-            <f:selectItems value="#{userController.sexes}"/>
-        </h:selectOneRadio>
-        
-        <h:commandButton value="Create" action="#{userController.add()}"></h:commandButton>
-        
-        </h:form>
+                    <h:selectOneRadio required="true" requiredMessage="Please select a gender" id="gender" value="#{userController.userDetails.sex}">
+                        <f:selectItems value="#{userController.sexes}"/>
+                    </h:selectOneRadio>
+            
+                 </h:panelGrid>
+            
+            <h:commandButton value="Create" action="#{userController.add()}"></h:commandButton>
 
+            </h:form>
+        </f:view>
     </h:body>
 </html>
 

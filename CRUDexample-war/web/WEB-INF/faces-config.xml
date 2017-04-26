@@ -6,26 +6,26 @@
 
     <navigation-rule>
         
-        <from-view-id>index.xhtml</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>add_a_shirt</from-outcome>
-            <to-view-id>addShirt.xhtml</to-view-id>
+            <to-view-id>/addShirt.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>add_a_shoe</from-outcome>
-            <to-view-id>addShoe.xhtml</to-view-id>
+            <to-view-id>/addShoe.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>edit_a_shoe</from-outcome>
-            <to-view-id>editShoe.xhtml</to-view-id>
+            <to-view-id>/editShoe.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>edit_a_shirt</from-outcome>
-            <to-view-id>editShirt.xhtml</to-view-id>
+            <to-view-id>/editShirt.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>added_to_cart</from-outcome>
-            <to-view-id>index.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         
     </navigation-rule>
@@ -35,66 +35,109 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>product_added</from-outcome>
-            <to-view-id>index.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>product_edited</from-outcome>
-            <to-view-id>index.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     
     </navigation-rule>
     
     <navigation-rule>    
                 
-        <from-view-id>cart.xhtml</from-view-id>
+        <from-view-id>/cart.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>checkout_cart</from-outcome>
-            <to-view-id>checkout/loginPage.xhtml</to-view-id>    
+            <to-view-id>/checkout/loginPage.xhtml</to-view-id>    
         </navigation-case>
         <navigation-case>
             <from-outcome>clear_cart</from-outcome>
-            <to-view-id>index.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>remove_from_cart</from-outcome>
-            <to-view-id>cart.xhtml</to-view-id>
+            <to-view-id>/cart.xhtml</to-view-id>
         </navigation-case>
         
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>checkout/loginPage.xhtml</from-view-id>
+        <from-view-id>/checkout/loginPage.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>create_a_user</from-outcome>
-            <to-view-id>checkout/createUser.xhtml</to-view-id>
+            <to-view-id>/checkout/createUser.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>existing_user</from-outcome>
-            <to-view-id>checkout/loginExistingUser.xhtml</to-view-id>
+            <to-view-id>/checkout/existingUserLogin.xhtml</to-view-id>
         </navigation-case>
         
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>checkout/loginPage.xhtml</from-view-id>
+        <from-view-id>/checkout/loginPage.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>login_success</from-outcome>
-            <to-view-id>checkout/addressPage.xhtml</to-view-id>
+            <to-view-id>/checkout/addressPage.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>login_failed</from-outcome>
-            <to-view-id>checkout/loginPage.xhtml</to-view-id>
+            <to-view-id>/checkout/loginPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>checkout/createUSer.xhtml</from-view-id>
+        <from-view-id>/checkout/createUser.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>user_created</from-outcome>
-            <to-view-id>checkout/addressPage.xhtml</to-view-id>
+            <to-view-id>/checkout/addressPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>user_already_exists</from-outcome>
+            <to-view-id>/checkout/createUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>user_creation_failed</from-outcome>
+            <to-view-id>/checkout/createUser.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
+    <navigation-rule>
+        <from-view-id>/checkout/addressPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>address_confirmed</from-outcome>
+            <to-view-id>/checkout/overviewOrder.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/checkout/existingUserLogin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login_success</from-outcome>
+            <to-view-id>/checkout/addressPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login_failed</from-outcome>
+            <to-view-id>/checkout/existingUserLogin.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/checkout/overviewOrder.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>order_completed</from-outcome>
+            <to-view-id>/checkout/orderConfirmedPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/checkout/orderConfirmedPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>end_shopping</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     
     <converter>
         <converter-for-class>java.lang.Enum</converter-for-class>

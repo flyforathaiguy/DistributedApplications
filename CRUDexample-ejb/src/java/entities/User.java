@@ -6,14 +6,17 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -24,17 +27,58 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @NotNull(message="Please choose a username")
     private String userName;
+    @NotNull(message="Please choose a password")
     private String password;
     
     
     @Embedded
     private UserDetails details;
     
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "address_fk")
     private Address address;
+    
+    @OneToMany(orphanRemoval=true)
+    @JoinTable(name="joined_user_order",
+            joinColumns = @JoinColumn(name="user_fk"),
+            inverseJoinColumns = @JoinColumn(name="order_fk"))
+    private List<UserOrder> placedOrders = new ArrayList<>();
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+//    public UserOrder getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(UserOrder order) {
+//        this.order = order;
+//    }
+    
+
+    public List<UserOrder> getPlacedOrders(){
+        return this.placedOrders;
+    }
+    
+    public void clearPlacedOrders(){
+        this.placedOrders.clear();
+    }
+    
+    public void addPlacedOrder(UserOrder newOrder){
+        this.placedOrders.add(newOrder);
+    }
+    
+    public void setPlacedOrders(List<UserOrder> newOrderList){
+        this.placedOrders = newOrderList;
+    }
+    
     public String getUserName() {
         return userName;
     }
@@ -57,14 +101,6 @@ public class User implements Serializable {
 
     public void setDetails(UserDetails details) {
         this.details = details;
-    }
-
-    public Address getAdress() {
-        return address;
-    }
-
-    public void setAdress(Address adress) {
-        this.address = adress;
     }
 
     @Override
