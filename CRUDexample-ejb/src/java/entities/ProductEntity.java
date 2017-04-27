@@ -23,8 +23,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import model.TagEntityFacade;
 
 
@@ -37,13 +35,8 @@ public abstract class ProductEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
-    @NotNull(message = "Please enter a product name")
     protected String name;
-    @NotNull(message = "Please enter a price")
-    @Min(value=1, message="Price should be higher than 0")
     protected int price;
-    @NotNull(message = "Please specify a quantity")
-    @Min(value=0, message = "Quantity should be at least 0")
     protected int quantity;
     
     @Lob

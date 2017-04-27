@@ -97,7 +97,20 @@
         <navigation-case>
             <from-outcome>existing_user</from-outcome>
             <to-view-id>/checkout/existingUserLogin.xhtml</to-view-id>
-        </navigation-case> 
+        </navigation-case>
+        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/checkout/loginPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login_success</from-outcome>
+            <to-view-id>/checkout/addressPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login_failed</from-outcome>
+            <to-view-id>/checkout/loginPage.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
