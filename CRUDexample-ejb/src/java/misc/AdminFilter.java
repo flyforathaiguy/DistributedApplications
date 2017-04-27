@@ -31,7 +31,7 @@ public class AdminFilter implements Filter{
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
         System.out.println("session..."+ session);
-        if (session == null || session.getAttribute("admin") == null) {
+        if ((session == null) || (session.getAttribute("admin") == null) || ((boolean) session.getAttribute("admin") == (false))) {
             System.out.println("Filter request rejected");
             res.sendRedirect(req.getContextPath() + "/faces/index.xhtml"); // No logged-in user found, so redirect to index page
         } else {

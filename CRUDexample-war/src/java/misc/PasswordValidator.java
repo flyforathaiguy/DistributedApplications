@@ -72,19 +72,19 @@ public class PasswordValidator implements Validator {
         patternMatcher1 = pattern1.matcher(value.toString());         
         if(!patternMatcher1.matches()){
             numberOfFlaws++;
-            builder.append("Contain at least 1 lower case character.");
+            builder.append("Contain at least 1 lower case character. ");
         }
         
         patternMatcher2 = pattern2.matcher(value.toString());         
         if(!patternMatcher2.matches()){
             numberOfFlaws++;
-            builder.append("Contain at least 1 upperr case character.");
+            builder.append("Contain at least 1 upper case character. ");
         }
         
         patternMatcher3 = pattern3.matcher(value.toString());         
         if(!patternMatcher3.matches()){
             numberOfFlaws++;
-            builder.append("Contain at least 1 number.");
+            builder.append("Contain at least 1 number. ");
         }
         
         if(value.toString().length() < 6){

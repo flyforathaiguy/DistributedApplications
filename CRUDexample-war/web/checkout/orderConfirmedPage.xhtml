@@ -13,7 +13,7 @@
                 <h1><h:outputText value="Your order has been placed! Your order details are:"/></h1>
                 <h2><h:outputText value="Items:"/></h2>
                 
-                <h:dataTable var = "p" value = "#{userController.orderList}"  border="1" cellpadding ="2" cellspacing = "2">
+                <h:dataTable var = "p" value = "#{userController.listOrder}"  border="1" cellpadding ="2" cellspacing = "2">
                     <h:column>
                         <h:outputText value = "#{p}"></h:outputText>
                     </h:column>

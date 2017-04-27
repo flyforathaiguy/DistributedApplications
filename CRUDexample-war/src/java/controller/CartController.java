@@ -52,6 +52,7 @@ public class CartController implements Serializable {
     }
     
     public boolean finalizeCheckout(){
+        singletonBean.addPurchase(shoppingCart.getCart().size());
         shoppingCart.clearCart();
         singletonBean.messageCheckout();
         return true;
