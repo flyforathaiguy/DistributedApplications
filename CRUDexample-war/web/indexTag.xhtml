@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Tag Index</title>
     </h:head>
     
      <h:body>
@@ -22,10 +22,18 @@
                     <f:facet name="header">Name</f:facet>
                     <h:outputText value = "#{tag.name}"></h:outputText>
                 </h:column>
+
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action="#{tagController.remove(tag)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{tagController.edit(tag)}"></h:commandLink>
+                </h:column>
+                
+                
                 <h:column>
                     <f:facet name="header">Products</f:facet>
                     
-                    <h:dataTable var ="product" value ="#{tag.getRelatedProducts()}" border="1" cellpadding="2" cellspacing="2">
+                    <h:dataTable var ="product" value ="#{tag.relatedProducts}" border="1" cellpadding="2" cellspacing="2">
                         <h:column>
                             <h:outputText value ="#{product.name}"></h:outputText>
                         </h:column>
@@ -36,18 +44,14 @@
 
                 </h:column>
 
-                <h:column>
-                    <f:facet name="header">Option</f:facet>
-                    <h:commandLink value="Delete" action="#{tagController.remove(tag)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
-                    <h:commandLink value="Edit" action="#{tagController.edit(tag)}"></h:commandLink>
-                </h:column>
-
             </h:dataTable>
 
             
             <h:link value="Back to Products" outcome="index"></h:link>
             <br></br>
-            <h:link value="Add Tags" outcome="addTag"></h:link>
+            <h:link value="Add Tags" outcome="add_tag"></h:link>
+            
+            
             
         </h:form>
  

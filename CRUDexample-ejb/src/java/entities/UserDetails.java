@@ -54,16 +54,6 @@ public class UserDetails implements Serializable {
     }
 
     public void setSex(Sex sex) {
-        System.out.println("Set sex with object");
         this.sex = sex;
-    }
-    
-    public void setSex(String sex){
-        System.out.println("Set sex with string");
-    }
-
-   
-   
-   
-    
+    }  
 }

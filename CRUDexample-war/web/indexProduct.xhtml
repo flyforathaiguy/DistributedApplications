@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Index</title>
+        <title>Product Index</title>
     </h:head>
     <h:body>
         
@@ -36,10 +36,25 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Option</f:facet>
-                    <h:commandLink value="Add to cart" action="#{cartController.add(shoe)}"></h:commandLink>
+                    <h:commandLink value="Delete" action="#{shoeController.remove(shoe)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{shoeController.edit(shoe)}"></h:commandLink>  
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Tags</f:facet>
+                    
+                    <h:dataTable var ="tag" value ="#{shoe.relatedTags}" border="1" cellpadding="2" cellspacing="2">
+                        <h:column>
+                            <h:outputText value ="#{tag.name}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink value="Delete Tag" action="#{shoeController.removeTag(shoe, tag)}"></h:commandLink>
+                        </h:column>
+                    </h:dataTable>
                 </h:column>
 
             </h:dataTable>
+            <h:link value="Add new shoe" outcome="add_a_shoe"></h:link>
             
             <br></br>
             <br></br>
@@ -68,18 +83,33 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Option</f:facet>
-                    <h:commandLink value="Add to cart" action="#{cartController.add(shirt)}"></h:commandLink>
+                    <h:commandLink value="Delete" action="#{shirtController.remove(shirt)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{shirtController.edit(shirt)}"></h:commandLink>
                 </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Tags</f:facet>
+                    
+                    <h:dataTable var ="tag" value ="#{shirt.relatedTags}" border="1" cellpadding="2" cellspacing="2">
+                        <h:column>
+                            <h:outputText value ="#{tag.name}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink value="Delete Tag" action="#{shirtController.removeTag(shirt, tag)}"></h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:column>
+                
+                
             </h:dataTable>
+            <h:link value="Add new shirt" outcome="/add/addShirt.xhtml"></h:link>
             
             <br></br>
-            <br></br>
+            <h:link value="Manage tags" outcome="manage_tags"></h:link>
             
-            <h:link value="View cart" outcome="view_cart"></h:link>     
             <br></br>
-            <br></br>
-            <br></br>
-            <h:link value="Manage Products" outcome="manage_products"></h:link>
+            <h:link value="Back to Products" outcome="index"></h:link>
+            
         </h:form>
  
     </h:body>

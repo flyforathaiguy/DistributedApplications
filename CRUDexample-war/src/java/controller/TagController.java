@@ -56,7 +56,7 @@ public class TagController implements Serializable {
         product.removeRelatedTag(tag);
         this.tagEntityFacade.edit(tag);
         this.productEntityFacade.edit(product);
-        return "indexTag";
+        return "index_tag";
     }
     
     public List<ProductEntity> getRelatedProducts(){
@@ -86,7 +86,7 @@ public class TagController implements Serializable {
         System.out.println("relatedProducts: " + this.tag.getRelatedProducts());
         
         this.tag = new TagEntity();
-        return "indexTag";
+        return "index_tag";
     }
     
     public String remove(TagEntity tag){
@@ -99,19 +99,19 @@ public class TagController implements Serializable {
         tag.clearRelatedProducts();
         this.tagEntityFacade.remove(tag);
         
-        return "indexTag";
+        return "index_tag";
     }
     
     public String edit(TagEntity newTag){
         this.tag = newTag;
-        return "editTag";
+        return "edit_tag";
     }
     
     public String edit(){
         this.tag.clearRelatedProducts();
         this.addProducts();
         this.tagEntityFacade.edit(this.tag);
-        return "indexTag";
+        return "index_tag";
     }
     
     private void addProducts(){

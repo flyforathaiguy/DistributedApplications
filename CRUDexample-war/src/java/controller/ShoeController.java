@@ -71,4 +71,12 @@ public class ShoeController implements Serializable {
         this.shoeEntityFacade.edit(this.shoe);
         return "product_edited";
     }
+    
+    public String removeTag(ShoeEntity shoe, TagEntity tag){
+        shoe.removeRelatedTag(tag);
+        tag.removeRelatedProduct(shoe);
+        this.tagEntityFacade.edit(tag);
+        this.shoeEntityFacade.edit(shoe);
+        return "product_edited";
+    }
 }

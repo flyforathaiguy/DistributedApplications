@@ -20,13 +20,22 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator("PasswordValidator")
 public class PasswordValidator implements Validator {
     
-    private static final String PATTERN = "^(?=.*[A_Z])(?=.*[a-z])(?=.*[0-9]).{6,}$";
+    private static final String PATTERN1 = "^(?=.*[a-z]).+$";
+    private static final String PATTERN2 = "^(?=.*[A-Z]).+$";
+    private static final String PATTERN3 = "^(?=.*\\d).+$";
     
-    private Pattern pattern;
-    private Matcher patternMatcher;
+    private Pattern pattern1;
+    private Pattern pattern2;
+    private Pattern pattern3;
+    
+    private Matcher patternMatcher1;
+    private Matcher patternMatcher2;
+    private Matcher patternMatcher3;
     
     public PasswordValidator(){
-        pattern = Pattern.compile(PATTERN);
+        pattern1 = Pattern.compile(PATTERN1);
+        pattern2 = Pattern.compile(PATTERN2);
+        pattern3 = Pattern.compile(PATTERN3);
     }
 
     @Override
@@ -56,11 +65,35 @@ public class PasswordValidator implements Validator {
         }
         
         //Check if password contains the right characters
-        patternMatcher = pattern.matcher(value.toString());
+        StringBuilder builder = new StringBuilder();
+        builder.append("Password does not meet these criteria:");
+        int numberOfFlaws = 0;
         
-                
-        if(!patternMatcher.matches()){
-            FacesMessage message = new FacesMessage("Password must contains at least one lower and upper letter, one number and be at least 6 characters long");  
+        patternMatcher1 = pattern1.matcher(value.toString());         
+        if(!patternMatcher1.matches()){
+            numberOfFlaws++;
+            builder.append("Contain at least 1 lower case character.");
+        }
+        
+        patternMatcher2 = pattern2.matcher(value.toString());         
+        if(!patternMatcher2.matches()){
+            numberOfFlaws++;
+            builder.append("Contain at least 1 upperr case character.");
+        }
+        
+        patternMatcher3 = pattern3.matcher(value.toString());         
+        if(!patternMatcher3.matches()){
+            numberOfFlaws++;
+            builder.append("Contain at least 1 number.");
+        }
+        
+        if(value.toString().length() < 6){
+            numberOfFlaws++;
+            builder.append("Be at least 6 characters long.");
+        }
+        
+        if(numberOfFlaws > 0){
+            FacesMessage message = new FacesMessage(builder.toString());  
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
         }

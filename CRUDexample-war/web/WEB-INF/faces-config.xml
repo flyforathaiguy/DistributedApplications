@@ -8,38 +8,64 @@
         
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>add_a_shirt</from-outcome>
-            <to-view-id>/addShirt.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>add_a_shoe</from-outcome>
-            <to-view-id>/addShoe.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>edit_a_shoe</from-outcome>
-            <to-view-id>/editShoe.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>edit_a_shirt</from-outcome>
-            <to-view-id>/editShirt.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>added_to_cart</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
-        
+        <navigation-case>
+            <from-outcome>view_cart</from-outcome>
+            <to-view-id>/cart.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>manage_products</from-outcome>
+            <to-view-id>/indexProduct.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
-    <navigation-rule>   
-          
-        <from-view-id>*</from-view-id>
+    <navigation-rule>
+        <from-view-id>/indexProduct.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>product_added</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <from-outcome>add_a_shirt</from-outcome>
+            <to-view-id>/add/addShirt.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>add_a_shoe</from-outcome>
+            <to-view-id>/add/addShoe.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit_a_shoe</from-outcome>
+            <to-view-id>/edit/editShoe.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit_a_shirt</from-outcome>
+            <to-view-id>/edit/editShirt.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>product_edited</from-outcome>
+            <to-view-id>/indexProduct.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>manage_tags</from-outcome>
+            <to-view-id>/indexTag.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>      
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>product_added</from-outcome>
+            <to-view-id>/indexProduct.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>product_edited</from-outcome>
+            <to-view-id>/indexProduct.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>index_tag</from-outcome>
+            <to-view-id>/indexTag.xhtml</to-view-id>
         </navigation-case>
     
     </navigation-rule>
@@ -135,6 +161,30 @@
         <from-view-id>/checkout/orderConfirmedPage.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>end_shopping</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/indexTag.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>add_tag</from-outcome>
+            <to-view-id>/add/addTag.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/indexProduct.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit_tag</from-outcome>
+            <to-view-id>/edit/editTag.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/hiddenPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>made_admin</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

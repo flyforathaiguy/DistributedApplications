@@ -12,7 +12,6 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import model.ShirtEntityFacade;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import model.TagEntityFacade;
 
@@ -69,6 +68,14 @@ public class ShirtController implements Serializable {
     
     public String edit(){
         this.shirtEntityFacade.edit(this.shirt);
+        return "product_edited";
+    }
+    
+    public String removeTag(ShirtEntity shirt, TagEntity tag){
+        shirt.removeRelatedTag(tag);
+        tag.removeRelatedProduct(shirt);
+        this.tagEntityFacade.edit(tag);
+        this.shirtEntityFacade.edit(shirt);
         return "product_edited";
     }
     

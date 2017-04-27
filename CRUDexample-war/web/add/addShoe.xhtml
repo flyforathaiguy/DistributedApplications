@@ -4,23 +4,23 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Add Shoe</title>
     </h:head>
     <h:body>
         <f:view>
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Add Shoe"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Name:" for="name" />
-                    <h:inputText id="name" value="#{shirtController.shirt.name}" title="Name" />
+                    <h:inputText id="name" value="#{shoeController.shoe.name}" title="Name" />
                     <h:outputLabel value="Price:" for="price" />
-                    <h:inputText id="price" value="#{shirtController.shirt.price}" title="Price" />
+                    <h:inputText id="price" value="#{shoeController.shoe.price}" title="Price" />
                     <h:outputLabel value="Quantity:" for="quantity" />
-                    <h:inputText id="quantity" value="#{shirtController.shirt.quantity}" title="Quantity" />
-                    <h:outputLabel value="Id:" for="id" />
-                    <h:inputText readonly ="true" id="id" value="#{shirtController.shirt.id}" title="Id" />
+                    <h:inputText id="quantity" value="#{shoeController.shoe.quantity}" title="Quantity" />
+                    <h:outputLabel value="Size:" for="size" />
+                    <h:inputText id="size" value="#{shoeController.shoe.size}" title="Size" />
                     
-                    <h:commandButton value="Save" action="#{shirtController.edit()}"></h:commandButton>
+                    <h:commandButton value="Save" action="#{shoeController.add()}"></h:commandButton>
                     
                 </h:panelGrid>
             </h:form>
