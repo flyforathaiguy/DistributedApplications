@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -28,10 +29,12 @@ public class Address implements Serializable {
     @NotNull(message = "Please enter your city")
     private String city;
     @NotNull(message = "Please enter your zipcode")
+    @Min(value=1, message="Invalid zipcode")
     private int zipcode;
     @NotNull(message = "Please enter your country")
     private String country;
     @NotNull(message = "Please enter your number")
+    @Min(value=1, message="Invalid number")
     private int number;
 
     public int getNumber() {
