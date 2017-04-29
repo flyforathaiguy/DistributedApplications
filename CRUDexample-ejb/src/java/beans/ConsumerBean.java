@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
+import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.jms.ConnectionFactory;
@@ -28,7 +29,8 @@ import javax.naming.NamingException;
  * @author jaspe
  */
 
-
+//@Singleton
+//@Startup
 
 //Injection
 @MessageDriven(activationConfig = {
