@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,6 +30,7 @@ public class TagEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     
+    @NotNull(message="Please enter a name")
     private String name;
     
     @ManyToMany

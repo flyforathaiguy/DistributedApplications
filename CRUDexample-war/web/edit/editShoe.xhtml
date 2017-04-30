@@ -14,9 +14,13 @@
                     <h:outputLabel value="Name:" for="name" />
                     <h:inputText id="name" value="#{shoeController.shoe.name}" title="Name" />
                     <h:outputLabel value="Price:" for="price" />
-                    <h:inputText id="price" value="#{shoeController.shoe.price}" title="Price" />
+                    <h:inputText id="price" value="#{shoeController.shoe.price}" title="Price">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     <h:outputLabel value="Quantity:" for="quantity" />
-                    <h:inputText id="quantity" value="#{shoeController.shoe.quantity}" title="Quantity" />
+                    <h:inputText id="quantity" value="#{shoeController.shoe.quantity}" title="Quantity">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     <h:outputLabel value="Id:" for="id" />
                     <h:inputText readonly ="true" id="id" value="#{shoeController.shoe.id}" title="Id" />
                     

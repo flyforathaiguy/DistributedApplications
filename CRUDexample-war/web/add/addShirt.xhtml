@@ -14,11 +14,19 @@
                     <h:outputLabel value="Name:" for="name" />
                     <h:inputText id="name" value="#{shirtController.shirt.name}" title="Name" />
                     <h:outputLabel value="Price:" for="price" />
-                    <h:inputText id="price" value="#{shirtController.shirt.price}" title="Price" />
+                    <h:inputText id="price" value="#{shirtController.shirt.price}" title="Price">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     <h:outputLabel value="Quantity:" for="quantity" />
-                    <h:inputText id="quantity" value="#{shirtController.shirt.quantity}" title="Quantity" />
+                    <h:inputText id="quantity" value="#{shirtController.shirt.quantity}" title="Quantity">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     <h:outputLabel value="Size:" for="size" />
-                    <h:inputText id="size" value="#{shirtController.shirt.size}" title="Size" />
+                    <h:inputText id="size" value="#{shirtController.shirt.size}" title="Size">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
+                    <h:outputLabel value="Color:" for="color"/>
+                    <h:inputText id="color" value="#{shirtController.shirt.color}" title="Color"/>
                     
                     <h:commandButton value="Save" action="#{shirtController.add()}"></h:commandButton>
                     

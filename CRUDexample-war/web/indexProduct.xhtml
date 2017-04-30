@@ -82,6 +82,10 @@
                     <h:outputText value="#{shirt.size}"></h:outputText>
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Color</f:facet>
+                    <h:outputText value="#{shirt.color}"/>
+                </h:column>
+                <h:column>
                     <f:facet name="header">Option</f:facet>
                     <h:commandLink value="Delete" action="#{shirtController.remove(shirt)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
                     <h:commandLink value="Edit" action="#{shirtController.edit(shirt)}"></h:commandLink>

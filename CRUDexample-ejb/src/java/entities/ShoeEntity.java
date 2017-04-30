@@ -11,15 +11,6 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value="ShoeEntity")
 public class ShoeEntity extends ProductEntity {
-    
-    int size;
 
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
     
 }

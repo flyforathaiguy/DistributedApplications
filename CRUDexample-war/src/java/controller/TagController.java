@@ -108,6 +108,10 @@ public class TagController implements Serializable {
     }
     
     public String edit(){
+        for(ProductEntity p : tag.getRelatedProducts()){
+            p.removeRelatedTag(tag);
+            this.productEntityFacade.edit(p);
+        }
         this.tag.clearRelatedProducts();
         this.addProducts();
         this.tagEntityFacade.edit(this.tag);

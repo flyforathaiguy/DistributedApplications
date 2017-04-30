@@ -18,16 +18,16 @@
             <h:form rendered="#{userController.user.address != null}">
                 <h2><h:outputText value="Saved address"/></h2>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Street:" />
+                    <h:outputText value="Street:" />
                     <h:outputText value="#{userController.user.address.street}"/>
-                    <h:outputLabel value="Number: "/>
+                    <h:outputText value="Number: "/>
                     <h:outputText value="#{userController.user.address.number}"/>
-                    <h:outputLabel value="City:"/>
-                    <h:outputLabel value="#{userController.user.address.city}"/>
-                    <h:outputLabel value="Country:"/>
-                    <h:outputLabel value="#{userController.user.address.country}"/>
-                    <h:outputLabel value="Zipcode:" />
-                    <h:outputLabel value="#{userController.user.address.zipcode}"/>
+                    <h:outputText value="City:"/>
+                    <h:outputText value="#{userController.user.address.city}"/>
+                    <h:outputText value="Country:"/>
+                    <h:outputText value="#{userController.user.address.country}"/>
+                    <h:outputText value="Zipcode:" />
+                    <h:outputText value="#{userController.user.address.zipcode}"/>
                     
                     <h:commandButton value="Use this address" action="#{userController.confirmAddress()}"></h:commandButton>   
                 </h:panelGrid>
@@ -36,15 +36,17 @@
             <h:form>
                 <h2><h:outputText value="Create new address"/></h2>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Street:" />
+                    <h:outputLabel value="Street:" for="street"/>
                     <h:inputText id="street" value="#{userController.address.street}" title="Name" />
-                    <h:outputLabel value="Number: "/>
-                    <h:inputText id="number" value="#{userController.address.number}" title="Number" />
-                    <h:outputLabel value="City:"/>
+                    <h:outputLabel value="Number: " for="number"/>
+                    <h:inputText id="number" value="#{userController.address.number}" title="Number">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
+                    <h:outputLabel value="City:" for="city"/>
                     <h:inputText id="city" value="#{userController.address.city}" title="Price" />
-                    <h:outputLabel value="Country:"/>
+                    <h:outputLabel value="Country:" for="country"/>
                     <h:inputText id="country" value="#{userController.address.country}" title="Quantity" />
-                    <h:outputLabel value="Zipcode:" />
+                    <h:outputLabel value="Zipcode:" for="zipCode"/>
                     <h:inputText id="zipCode" value="#{userController.address.zipcode}" title="Size" />
                     
                     <h:commandButton value="Confirm new address" action="#{userController.confirmNewAddress()}"></h:commandButton>

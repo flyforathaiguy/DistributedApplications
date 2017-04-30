@@ -14,11 +14,17 @@
                     <h:outputLabel value="Name:" for="name" />
                     <h:inputText id="name" value="#{shoeController.shoe.name}" title="Name" />
                     <h:outputLabel value="Price:" for="price" />
-                    <h:inputText id="price" value="#{shoeController.shoe.price}" title="Price" />
+                    <h:inputText id="price" value="#{shoeController.shoe.price}" title="Price">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     <h:outputLabel value="Quantity:" for="quantity" />
-                    <h:inputText id="quantity" value="#{shoeController.shoe.quantity}" title="Quantity" />
+                    <h:inputText id="quantity" value="#{shoeController.shoe.quantity}" title="Quantity">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     <h:outputLabel value="Size:" for="size" />
-                    <h:inputText id="size" value="#{shoeController.shoe.size}" title="Size" />
+                    <h:inputText id="size" value="#{shoeController.shoe.size}" title="Size">
+                        <f:convertNumber integerOnly="true" type="number" />
+                    </h:inputText>
                     
                     <h:commandButton value="Save" action="#{shoeController.add()}"></h:commandButton>
                     

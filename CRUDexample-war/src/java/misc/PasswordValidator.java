@@ -24,9 +24,9 @@ public class PasswordValidator implements Validator {
     private static final String PATTERN2 = "^(?=.*[A-Z]).+$";
     private static final String PATTERN3 = "^(?=.*\\d).+$";
     
-    private Pattern pattern1;
-    private Pattern pattern2;
-    private Pattern pattern3;
+    private final Pattern pattern1;
+    private final Pattern pattern2;
+    private final Pattern pattern3;
     
     private Matcher patternMatcher1;
     private Matcher patternMatcher2;
@@ -44,13 +44,9 @@ public class PasswordValidator implements Validator {
         
         if(value == null)
             return;
-        System.out.println("Of hier????");
         String password = value.toString();
-        System.out.println("hier 1");
         UIInput uiInputConfirmPassword = (UIInput) component.getAttributes().get("confirmPassword");
-        System.out.println("hier 2");
         String confirmPassword = uiInputConfirmPassword.getSubmittedValue().toString();
-        System.out.println("hier 3");
         
         if(password == null || password.isEmpty() || confirmPassword == null || 
                 confirmPassword.isEmpty())

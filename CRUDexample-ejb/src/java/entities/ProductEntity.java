@@ -23,6 +23,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import model.TagEntityFacade;
 
 
@@ -35,12 +37,17 @@ public abstract class ProductEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
+    @NotNull(message="Please choose a username")
     protected String name;
+    @NotNull
+    @Min(value=0, message="Price can't be lower than 0")
     protected int price;
+    @NotNull
+    @Min(value=0, message="Quantity can't be lower than 0")
     protected int quantity;
-    
-    @Lob
-    private byte[] image;
+    @NotNull
+    @Min(value=0, message="Size can't be lower than 0")
+    int size;
     
     @ManyToMany(mappedBy = "relatedProducts")
     private List<TagEntity> relatedTags;
@@ -51,7 +58,9 @@ public abstract class ProductEntity implements Serializable {
     }
     
     public void addRelatedTag(TagEntity tag){
-        relatedTags.add(tag);
+        if(!relatedTags.contains(tag)){
+            relatedTags.add(tag);
+        }
     }
     
     public void removeRelatedTag(TagEntity tag){
@@ -68,14 +77,6 @@ public abstract class ProductEntity implements Serializable {
 
     public void setRelatedTags(List<TagEntity> relatedTags) {
         this.relatedTags = relatedTags;
-    }
-    
-    public byte[] getImage(){
-        return this.image;
-    }
-    
-    public void setImage(byte[] newImage){
-        this.image = newImage;
     }
 
     public String getName() {
@@ -144,16 +145,12 @@ public abstract class ProductEntity implements Serializable {
         builder.append(", price: ");
         builder.append(price);
         return builder.toString();
-    }
-
-    private TagEntityFacade lookupTagEntityFacadeBean() {
-        try {
-            Context c = new InitialContext();
-            return (TagEntityFacade) c.lookup("java:global/CRUDexample/CRUDexample-ejb/TagEntityFacade!model.TagEntityFacade");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
+    } 
     
+    public void setSize(int size){
+        this.size = size;
+    }
+    public int getSize(){
+        return this.size;
+    }
 }
