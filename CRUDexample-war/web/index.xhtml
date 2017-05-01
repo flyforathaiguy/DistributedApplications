@@ -5,11 +5,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Index</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        
+
         <h:form>
-            
+
             <br></br>
             Shoes
             <h:dataTable var = "shoe" value = "#{shoeController.findAll()}"  border="1" cellpadding ="2" cellspacing = "2">
@@ -39,10 +40,10 @@
                 </h:column>
 
             </h:dataTable>
-            
+
             <br></br>
             <br></br>
-            
+
             Shirts
             <h:dataTable var="shirt" value ="#{shirtController.findAll()}" border="1" cellpadding="2" cellspacing="2">
                 <h:column>
@@ -69,23 +70,26 @@
                     <f:facet name="header">Color</f:facet>
                     <h:outputText value="#{shirt.color}"/>
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name="header">Option</f:facet>
                     <h:commandLink value="Add to cart" action="#{cartController.add(shirt)}"></h:commandLink>
                 </h:column>
             </h:dataTable>
-            
+
             <br></br>
             <br></br>
-            
+
             <h:link value="View cart" outcome="view_cart"></h:link>     
-            <br></br>
-            <br></br>
-            <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
             <h:link value="Manage Products" outcome="manage_products"></h:link>
         </h:form>
- 
+
+        <br />
+        <h:link outcome="/ui/test/List" value="Show All Test Items"/>
     </h:body>
+
 </html>
 

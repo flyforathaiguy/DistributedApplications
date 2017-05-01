@@ -25,12 +25,15 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import model.TagEntityFacade;
 
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name= "PRODUCT_TYPE")
+@XmlRootElement
 public abstract class ProductEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,6 +74,7 @@ public abstract class ProductEntity implements Serializable {
         relatedTags.clear();
     }
 
+    @XmlTransient
     public List<TagEntity> getRelatedTags() {
         return relatedTags;
     }

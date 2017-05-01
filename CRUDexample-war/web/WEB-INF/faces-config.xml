@@ -197,5 +197,10 @@
         <converter-for-class>java.lang.Enum</converter-for-class>
         <converter-class>javax.faces.convert.EnumConverter</converter-class>
     </converter>
-    
+    <application>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
 </faces-config>

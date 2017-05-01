@@ -17,12 +17,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author jaspe
  */
 @Entity
+@XmlRootElement
 public class TagEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,6 +68,7 @@ public class TagEntity implements Serializable {
         this.name = name;
     }
 
+    @XmlTransient
     public List<ProductEntity> getRelatedProducts() {
         return relatedProducts;
     }

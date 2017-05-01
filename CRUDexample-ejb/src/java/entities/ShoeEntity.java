@@ -7,9 +7,11 @@ package entities;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @DiscriminatorValue(value="ShoeEntity")
+@XmlRootElement
 public class ShoeEntity extends ProductEntity {
 
     
