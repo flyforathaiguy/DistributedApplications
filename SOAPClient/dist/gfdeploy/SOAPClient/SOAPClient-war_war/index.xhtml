@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>SOAP Client</title>
+    </h:head>
+    
+    
+    <h:form>
+        <h:body>
+
+            <br></br>
+            <br></br>
+
+            <h:column>
+                
+                <h:dataTable value="#{sOAPClient.shirtsMinusBrackets}" var="shirt" border="1" cellpadding ="2" cellspacing = "2">
+                    <f:facet name="header">Shirt</f:facet>
+                    <h:column>#{shirt}</h:column>
+                </h:dataTable>
+                              
+                
+                <h:dataTable value="#{sOAPClient.shoesMinusBrackets}" var="shoes" border="1" cellpadding ="2" cellspacing = "2">
+                    <f:facet name="header">Shoes</f:facet>
+                    <h:column>#{shoes}</h:column>
+                </h:dataTable>
+
+            </h:column>            
+        </h:body>
+    </h:form>
+</html>

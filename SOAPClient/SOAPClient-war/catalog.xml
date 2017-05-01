@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://robin-pc:8080/CRUDexample-war/ProductWebService?wsdl" uri="src/conf/xml-resources/web-service-references/ProductWebService/wsdl/robin-pc_8080/CRUDexample-war/ProductWebService.wsdl"/>
+    <system systemId="http://robin-pc:8080/CRUDexample-war/ProductWebService?xsd=1" uri="src/conf/xml-resources/web-service-references/ProductWebService/wsdl/robin-pc_8080/CRUDexample-war/ProductWebService.xsd_1.xsd"/>
+</catalog>
