@@ -48,6 +48,7 @@ public class userController implements Serializable {
     private String loginPassword;
     
     private boolean admin = false;
+    private boolean login = false;
     
     private List<String> listOrder = new ArrayList<>();
     
@@ -153,6 +154,7 @@ public class userController implements Serializable {
                 this.user = secondUser;
                 this.userDetails = user.getDetails();
                 this.address = user.getAddress();
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("login", true);
                 return "login_success";   
             }
             else
@@ -166,6 +168,7 @@ public class userController implements Serializable {
         this.user = new User();
         this.userDetails = new UserDetails();
         this.user.setDetails(this.userDetails);
+        this.address = new Address();
         return "create_a_user";
     }
     
@@ -175,6 +178,7 @@ public class userController implements Serializable {
     
     public String addUser(){
         this.userFacade.create(user);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("login", true);
         return "user_created";
     }
     
@@ -201,6 +205,8 @@ public class userController implements Serializable {
         System.out.println("2-------------------------------");
         List<ProductEntity> productList = context.getApplication().evaluateExpressionGet(context, "#{cartController.findAll()}", List.class);
         System.out.println("3------------------------------- size: " + productList.size());
+        if(productList.isEmpty())
+            return "order_empty_cart";
         
         listOrder.clear();
         UserOrder order = new UserOrder();

@@ -47,5 +47,21 @@
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/faces/indexTag.xhtml</url-pattern>
     </filter-mapping>
+    
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>misc.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/faces/checkout/orderConfirmedPage.xhtml</url-pattern>
+    </filter-mapping><filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/faces/checkout/overviewOrder.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/faces/checkout/addressPage.xhtml</url-pattern>
+    </filter-mapping>
 
 </web-app>
